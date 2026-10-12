@@ -1,0 +1,23 @@
+=== Rolling intrinsic: re-optimisation every 7 days, 20000 paths, 8 workers ===
+Run time: 30.7 min
+Max constraint violation over all paths: 2.99e-03 MWh
+
+=== Values on the same 20000 valuation paths (95% CI, control variate) ===
+Intrinsic (LP, exact)                           7,826,175   [   7,826,175,    7,826,175]
+Rolling intrinsic, weekly                       9,684,960   [   9,638,830,    9,731,090]
+LSMC (factors basis)                            9,987,588   [   9,942,886,   10,032,291]
+Rolling intrinsic - intrinsic                   1,858,785   [   1,812,655,    1,904,916]
+LSMC - rolling intrinsic (paired)                 302,341   [     285,547,      319,135]
+Share of LSMC extrinsic captured by RI             86.1%   [      85.3%,       86.9%]
+Pathwise: RI > LSMC on 42.3% of paths
+
+=== Daily vs weekly re-optimisation (first 500 paths, 4.9 min) ===
+Daily RI - weekly RI (paired)                     158,751   [     111,065,      206,436]
+LSMC - daily RI (paired)                          148,549   [      38,162,      258,936]
+
+                        comparison      mean_EUR        ci_low       ci_high
+     rolling intrinsic - intrinsic  1858785.3544  1812655.0862  1904915.6226
+          LSMC - rolling intrinsic   302341.3050   285547.3603   319135.2496
+  daily RI - weekly RI (500 paths)   158750.7020   111065.3839   206436.0201
+Figures saved to results/figures
+Tables saved to results/tables

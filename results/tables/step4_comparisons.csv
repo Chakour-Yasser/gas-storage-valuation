@@ -1,0 +1,4 @@
+comparison,mean_EUR,ci_low,ci_high
+rolling intrinsic - intrinsic,1858785.3544,1812655.0862,1904915.6226
+LSMC - rolling intrinsic,302341.3050,285547.3603,319135.2496
+daily RI - weekly RI (500 paths),158750.7020,111065.3839,206436.0201

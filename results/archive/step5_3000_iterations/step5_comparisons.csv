@@ -1,0 +1,3 @@
+comparison,mean_EUR,ci_low,ci_high
+NN - LSMC,-242105.3310,-257218.1047,-226992.5573
+NN - rolling intrinsic,60235.9739,39944.0977,80527.8502

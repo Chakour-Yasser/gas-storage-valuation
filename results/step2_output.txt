@@ -1,0 +1,51 @@
+=== Intrinsic LP ===
+Variables / constraints : 1099 / 1830
+Solve time (HiGHS)      : 0.022 s
+Intrinsic value         : 7,826,175 EUR
+Per MWh of WGV          : 7.8262 EUR/MWh
+Total injected          : 1,000,000 MWh
+Total withdrawn         : 1,000,000 MWh
+Max fill level          : 100.00% of WGV
+
+=== Check 1: constraint violations of the schedule (MWh) ===
+  below_zero           1.19e-08
+  above_wgv            0.00e+00
+  injection_ratchet    0.00e+00
+  withdrawal_ratchet   2.66e-10
+  final_inventory      1.19e-08
+  inject_and_withdraw  0.00e+00
+
+=== Check 2: value recomputed from cash flows ===
+Sum of discounted cash flows : 7,826,174.76 EUR
+Difference with LP objective : -1.12e-08 EUR
+
+=== Check 3: DP on an inventory grid (lower bound of the LP) ===
+  grid_step_MWh  dp_value_EUR     gap_EUR  gap_pct   time_s
+       500.0000  7742164.0935  84010.6653   1.0735   0.1300
+       250.0000  7762442.0121  63732.7466   0.8144   0.3671
+       100.0000  7806399.6324  19775.1264   0.2527   1.7539
+        50.0000  7818026.9570   8147.8018   0.1041   6.2213
+        25.0000  7819823.3796   6351.3792   0.0812  23.4400
+
+=== Check 4: fixed intrinsic schedule on 20000 simulated spot paths ===
+MC mean value  : 7,781,832 EUR   95% CI [7,641,936, 7,921,728]
+LP value       : 7,826,175 EUR   z = -0.62   inside CI: True
+Std of path PV : 10,094,192 EUR  (spot risk of the schedule if left unhedged)
+
+=== Intrinsic schedule by month (forward hedge) ===
+    month  forward  injected_MWh  withdrawn_MWh       net_MWh  end_fill_pct    pv_cash_EUR
+  2027-04  31.0000    93574.8108         0.0000    93574.8108        9.3575  -2913905.2360
+  2027-05  29.5000   206666.6667         0.0000   206666.6667       30.0241  -6114838.7824
+  2027-06  29.0000   200000.0000         0.0000   200000.0000       50.0241  -5803396.6686
+  2027-07  29.5000   206663.9836         0.0000   206663.9836       70.6905  -6084178.6576
+  2027-08  30.0000   173628.9505         0.0000   173628.9505       88.0534  -5184836.5821
+  2027-09  31.0000   119465.5884         0.0000   119465.5884      100.0000  -3676314.6287
+  2027-10  33.0000        0.0000         0.0000        0.0000      100.0000         0.0000
+  2027-11  36.0000        0.0000         0.0000        0.0000      100.0000         0.0000
+  2027-12  38.5000        0.0000    344444.4444  -344444.4444       65.5556  12947016.8295
+  2028-01  39.5000        0.0000    344444.4444  -344444.4444       31.1111  13250374.4506
+  2028-02  38.5000        0.0000    244612.7392  -244612.7392        6.6498   9149712.7652
+  2028-03  35.0000        0.0000     66498.3719   -66498.3719        0.0000   2256541.2687
+
+Figures saved to results/figures
+Tables saved to results/tables

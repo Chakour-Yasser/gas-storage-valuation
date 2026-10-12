@@ -1,0 +1,57 @@
+=== Contract ===
+Working volume (MWh)          : 1,000,000
+Max injection rate (MWh/day)  : 6,666.7
+Max withdrawal rate (MWh/day) : 11,111.1
+Days to fill from empty       : 168
+Days to empty from full       : 104
+Injection ratchet concave     : True
+Withdrawal ratchet concave    : True
+
+=== Simulation ===
+Delivery days : 366 (2027-04-01 to 2028-03-31)
+Paths         : 20000, seed 20270401
+
+=== Check 1: monthly average spot vs input forward (95% CI) ===
+    month  forward  mc_mean   ci_low  ci_high  rel_error_pct  z_score  forward_in_ci
+  2027-04  31.0000  31.0329  30.9874  31.0784         0.1062   1.4182            yes
+  2027-05  29.5000  29.5208  29.4466  29.5950         0.0705   0.5489            yes
+  2027-06  29.0000  29.0063  28.9190  29.0937         0.0218   0.1422            yes
+  2027-07  29.5000  29.5339  29.4368  29.6310         0.1148   0.6835            yes
+  2027-08  30.0000  30.0248  29.9196  30.1301         0.0827   0.4621            yes
+  2027-09  31.0000  30.9983  30.8842  31.1125        -0.0054  -0.0286            yes
+  2027-10  33.0000  32.9692  32.8431  33.0953        -0.0933  -0.4783            yes
+  2027-11  36.0000  35.9721  35.8301  36.1140        -0.0775  -0.3854            yes
+  2027-12  38.5000  38.4652  38.3088  38.6216        -0.0905  -0.4365            yes
+  2028-01  39.5000  39.4822  39.3163  39.6481        -0.0451  -0.2103            yes
+  2028-02  38.5000  38.4703  38.3043  38.6362        -0.0773  -0.3514            yes
+  2028-03  35.0000  35.0237  34.8687  35.1786         0.0676   0.2993            yes
+
+=== Check 2: Var[ln S_t], simulated vs theoretical (first day of each month) ===
+        date  theory  mc_variance  ci_low  ci_high  rel_error_pct  theory_in_ci
+  2027-04-01  0.0013       0.0013  0.0013   0.0013        -0.2156           yes
+  2027-05-01  0.0305       0.0302  0.0296   0.0308        -0.7980           yes
+  2027-06-01  0.0475       0.0462  0.0453   0.0471        -2.7637            NO
+  2027-07-01  0.0577       0.0563  0.0552   0.0574        -2.4716            NO
+  2027-08-01  0.0652       0.0648  0.0636   0.0661        -0.6071           yes
+  2027-09-01  0.0713       0.0707  0.0693   0.0721        -0.7909           yes
+  2027-10-01  0.0765       0.0772  0.0757   0.0787         0.8812           yes
+  2027-11-01  0.0817       0.0820  0.0804   0.0836         0.3936           yes
+  2027-12-01  0.0866       0.0858  0.0841   0.0875        -0.9818           yes
+  2028-01-01  0.0917       0.0923  0.0905   0.0942         0.6644           yes
+  2028-02-01  0.0969       0.0964  0.0945   0.0983        -0.5112           yes
+  2028-03-01  0.1017       0.1012  0.0992   0.1032        -0.4742           yes
+Days with theoretical variance inside the 95% CI: 317 / 366 (86.6%)
+Max |relative error| over all days: 3.49%
+(Days are strongly correlated along a path, so the coverage is noisy.)
+
+=== Check 3: E[F(2027-09-30, T)] = F(0, T) for winter months ===
+    month  forward_t0  mc_mean_F_t   ci_low  ci_high  forward_in_ci
+  2027-10     33.0000      32.9887  32.8732  33.1043            yes
+  2027-11     36.0000      35.9921  35.8859  36.0983            yes
+  2027-12     38.5000      38.4962  38.3939  38.5986            yes
+  2028-01     39.5000      39.5004  39.4010  39.5997            yes
+  2028-02     38.5000      38.5035  38.4089  38.5982            yes
+  2028-03     35.0000      35.0054  34.9201  35.0908            yes
+
+Figures saved to results/figures
+Tables saved to results/tables

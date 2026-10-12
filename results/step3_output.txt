@@ -1,0 +1,39 @@
+=== LSMC base case ===
+Grid: 101 levels (adaptive), actions [0.0, 1.0], basis factors degree 3, regression paths 10000, valuation paths 20000
+Fit time: 10.6 s
+In-sample value (biased up)                  10,083,384   [   9,912,133,   10,254,635]
+Out-of-sample value                           9,916,565   [   9,795,729,   10,037,401]
+Out-of-sample, control variate                9,987,588   [   9,942,886,   10,032,291]
+  (control variate: corr = 0.929, beta = 0.803, CI width / 2.7)
+Intrinsic value (LP, exact)                   7,826,175   [   7,826,175,    7,826,175]
+Extrinsic = LSMC OOS - intrinsic              2,161,414   [   2,116,711,    2,206,116]
+  extrinsic / intrinsic = 27.6%
+In-sample - out-of-sample                       166,819   [     -42,771,      376,409]
+
+=== Feasibility of the 20000 out-of-sample schedules (max violation, MWh) ===
+  below_zero           0.00e+00
+  above_wgv            0.00e+00
+  injection_ratchet    1.82e-12
+  withdrawal_ratchet   2.73e-11
+  final_inventory      0.00e+00
+
+=== Perfect-foresight upper bound (1000 valuation paths) ===
+Perfect foresight value                      14,860,254   [  14,319,207,   15,401,300]
+Perfect foresight - LSMC (paired)             4,426,386   [   4,218,899,    4,633,874]
+
+=== Variants (out-of-sample, paired difference vs base, 95% CI) ===
+                          variant     oos_value        ci_low        ci_high  diff_vs_base      diff_low     diff_high  max_violation_MWh  fit_time_s
+    fixed grid [0, WGV] + penalty  9804121.0158  9760911.4912   9847330.5403  -182827.3683  -191620.0270  -174034.7095             0.0000     10.5264
+  5 actions (0, 1/4, 1/2, 3/4, 1)  9987473.3133  9942769.7323  10032176.8943     -118.2969     -777.2685      540.6746             0.0000     18.7450
+                        51 levels  9988739.2722  9943876.3484  10033602.1960     1128.0551      158.8729     2097.2372             0.0000      5.2461
+                       201 levels  9987532.8381  9942884.5287  10032181.1475      -36.2512    -1072.3569      999.8546             0.0000     21.7599
+             spot basis, degree 3  9196960.4481  9153132.6342   9240788.2620  -791259.3091  -830209.3675  -752309.2507             0.0000      9.7690
+                         degree 2  9973449.1424  9928998.7112  10017899.5736   -14181.4198   -17983.2152   -10379.6244             0.0000     10.0899
+                         degree 4  9986180.2539  9941305.1491  10031055.3588    -1352.5540    -3999.0101     1293.9022             0.0000     10.9882
+           2,500 regression paths  9963994.3713  9919333.7171  10008655.0254   -23597.5384   -29777.0175   -17418.0592             0.0000      2.4470
+           5,000 regression paths  9981158.7463  9936718.7072  10025598.7853    -6613.8705   -10134.8708    -3092.8703             0.0000      5.0127
+          20,000 regression paths  9990403.8587  9945881.0262  10034926.6912     3154.2669      -79.4449     6387.9787             0.0000     24.2551
+Partial volumes chosen (5-action variant): 2.03% of trading decisions
+
+Figures saved to results/figures
+Tables saved to results/tables

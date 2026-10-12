@@ -1,0 +1,51 @@
+=== Training: 3000 iterations x 2048 paths, network [64, 64] ===
+  iteration   100  batch value    8,617,823  validation    8,942,450  (26 s)
+  iteration   200  batch value    9,164,586  validation    9,326,670  (52 s)
+  iteration   300  batch value    8,977,023  validation    9,393,900  (77 s)
+  iteration   400  batch value    9,228,442  validation    9,431,566  (102 s)
+  iteration   500  batch value    8,996,249  validation    9,454,558  (126 s)
+  iteration   600  batch value    9,646,950  validation    9,490,698  (152 s)
+  iteration   700  batch value    9,319,715  validation    9,538,736  (176 s)
+  iteration   800  batch value    9,458,679  validation    9,610,165  (200 s)
+  iteration   900  batch value    9,763,440  validation    9,648,659  (223 s)
+  iteration  1000  batch value    9,600,246  validation    9,671,862  (247 s)
+  iteration  1100  batch value    9,183,728  validation    9,693,687  (271 s)
+  iteration  1200  batch value    9,610,742  validation    9,711,815  (294 s)
+  iteration  1300  batch value    9,430,650  validation    9,731,038  (318 s)
+  iteration  1400  batch value    9,614,911  validation    9,743,029  (343 s)
+  iteration  1500  batch value    9,581,438  validation    9,757,784  (367 s)
+  iteration  1600  batch value    9,441,480  validation    9,769,607  (391 s)
+  iteration  1700  batch value    9,681,870  validation    9,779,254  (415 s)
+  iteration  1800  batch value    9,686,174  validation    9,792,611  (440 s)
+  iteration  1900  batch value    9,856,584  validation    9,800,767  (465 s)
+  iteration  2000  batch value    9,759,663  validation    9,807,054  (491 s)
+  iteration  2100  batch value    9,664,882  validation    9,814,332  (517 s)
+  iteration  2200  batch value    9,755,938  validation    9,819,954  (544 s)
+  iteration  2300  batch value    9,398,315  validation    9,823,419  (571 s)
+  iteration  2400  batch value    9,463,542  validation    9,824,825  (596 s)
+  iteration  2500  batch value    9,869,257  validation    9,827,768  (622 s)
+  iteration  2600  batch value    9,778,331  validation    9,830,752  (647 s)
+  iteration  2700  batch value    9,752,730  validation    9,832,683  (673 s)
+  iteration  2800  batch value    9,955,524  validation    9,833,781  (699 s)
+  iteration  2900  batch value    9,586,048  validation    9,834,895  (724 s)
+  iteration  3000  batch value    9,373,599  validation    9,836,007  (750 s)
+Best validation value 9,836,007 at iteration 3000 (LSMC on validation paths: 10,082,298)
+Training time: 12.5 min
+
+=== Out-of-sample values on the same 20000 valuation paths (95% CI) ===
+Intrinsic (LP, exact)                         7,826,175   [   7,826,175,    7,826,175]
+Rolling intrinsic, weekly                     9,684,960   [   9,638,830,    9,731,090]
+LSMC (factor basis)                           9,987,588   [   9,942,886,   10,032,291]
+Neural network policy                         9,744,576   [   9,693,413,    9,795,738]
+NN - LSMC (paired)                             -242,105   [    -257,218,     -226,993]
+NN - rolling intrinsic (paired)                  60,236   [      39,944,       80,528]
+NN extrinsic / LSMC extrinsic                    88.9%   [      88.1%,       89.7%]
+Pathwise: NN > LSMC on 35.2% of paths
+Max constraint violation: 2.18e-11 MWh
+Days with a trade: 89.0%; trades at full ratchet rate (+/- 2%): 74.7%
+
+              comparison      mean_EUR        ci_low       ci_high
+               NN - LSMC  -242105.3310  -257218.1047  -226992.5573
+  NN - rolling intrinsic    60235.9739    39944.0977    80527.8502
+Figures saved to results/figures
+Tables saved to results/tables
